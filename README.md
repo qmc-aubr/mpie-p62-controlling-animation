@@ -73,3 +73,30 @@ Now you’ve got this new animation file, see if you can do the following:
 2. Create a transition between the idle state and the walk state (you can make new transitions by right clicking on the state you want to transition from, choosing “Make transition” and then clicking on the state you want to transition to).
 
 Press play and see what happens, does it do what you expect?
+
+## Task 6: Controlling transitions using parameters and conditions
+If you did the last task correctly, you should have seen that your idle animation played once, followed by your walking animation. This is the expected behaviour, but not what we want. Rather, we want to have our idle animation play when the character is standing still, and our walking animation play when they are moving forward.
+
+We can do this in the animation controller using parameters and conditions.
+
+A parameter is a variable that represents some piece of information that might trigger a transition between two states (e.g. the current movement speed of the character) and a condition allows us to define when a transition should be triggered based on the state of a parameter (e.g. transition from idle to walking when movement speed is greater than 0).
+
+You can define parameters by using a little interface on the left of the animation controller UI. Explore this interface and see if you can create a Float parameter called “movementSpeed”.
+
+You can define conditions by clicking on a transition (i.e. click on the arrow between the states). In the inspector that appears, there is a little menu under the heading “conditions” that lets you configure the conditions that control when the transition happens or not. Try using this menu to create a condition that causes the player to transition from idle to walking when the movementSpeed parameter you’ve created is greater than 0.
+
+Now you’ve got a parameter and a condition set up. But you might be wondering how you tell the animation control what the player’s current movement speed is to trigger the condition. You can do this by using some simple lines of code in a script, which pass a value to the state machine. For example, the snippet below shows how to tell the state machine that it should set its “movementSpeed” parameter to have a value defined by a variable called movement.
+
+```
+Animator animator = GetComponentInChildren<Animator>();
+animator.SetFloat("movementSpeed", movement);
+```
+  
+See if you can adapt the ThirdPersonController.cs script found on the ThirdPersonController game object so that it triggers the walking animation when the player moves forward. I’ve created an “ApplyAnimations” method in this script, in which you can write your code.
+
+Once your script is working, you might notice that the transition between the animations is sluggish, with the whole idle animation playing until the end before the walking animation starts. See if you can adjust the settings for the transition in the inspector so that the animation plays straight away. 
+
+*Tip: you may wish to look at the interface element that looks a bit like a video editing timeline and the “Has Exit Time” checkbox when making this, and subsequent, adjustments.*
+
+To complete the task, see if you can repeat the process above in order to make a new transition that plays the idle animation again when the character’s movement speed drops below 0.1f. Do you need to write any more code to do this?
+
