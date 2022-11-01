@@ -100,3 +100,24 @@ Once your script is working, you might notice that the transition between the an
 
 To complete the task, see if you can repeat the process above in order to make a new transition that plays the idle animation again when the character’s movement speed drops below 0.1f. Do you need to write any more code to do this?
 
+## Task 7: Getting creative with lots of animations
+It might seem like we’ve gone through a very long and complex process in order to play an animation when the user presses the up arrow! What’s important to note, however, is that you’ve now learned all the basic concepts you need in order to create far more complex animation state machines that comprise many animations that respond to many different parameters.
+
+For the remainder of the practical, see if you can use the principles you’ve learned about in tasks 1-6 to extend your animation state machine so it includes additional animations, such as:
+
+-	Walking back – plays when the character walks backward by pressing down
+-	Running – plays when the player runs by holding shift
+-	Jump – plays when the player presses jump
+-	Running jump – plays when the player presses jump and is running
+-	Backwards jump – plays when the player presses jump while walking backwards
+-	Crouch – plays when the player crouches by pressing CTRL
+-	Crouch walk – plays when the player walks forward while crouching
+-	Crouch walk back – plays when the player walks backward while couching
+
+You should be able to implement all of the logic for controlling these animations using a single state machine, with only minimal lines of code needed to set the values of parameters. I’ve provided the information you should need to pass to the state machine as inputs to the ApplyAnimations method, meaning you shouldn’t need to change the code in the Update method to complete this task.
+
+## Additional Optional Tasks
+- Can you extend the ThirdPersonController script to support strafing with associated animations?
+- Can you create one of your own animations in Maya and include it into the state machine?
+-	Can you make your character play a falling animation when it falls from a height?
+-	You might notice the third person controller doesn’t jump over obstacles! Can you fix this?
